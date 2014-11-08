@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{{result.title}}{% endblock %}
+{% block content %}
+  {% if result %}
+    <h1>{{result.title}}</h1>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a href="{{result.url}}" class="btn btn-default pull-right btn-xs">View full document</a>
+        <h3 class="panel-title">Description</h3>
+      </div>
+      <div class="panel-body">
+        {{result.description}}
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Definitions</h3>
+      </div>
+      <div class="panel-body">
+        <table  class="table">
+          {% for definition in result.definitions %}
+            <tr>
+              <td>{{definition}}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Regulations</h3>
+      </div>
+      <div class="panel-body">
+        <table  class="table">
+          {% for regulation in result.regulations %}
+            <tr>
+              <td>{{regulation}}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  {% endif %}
+
+{% endblock %}
