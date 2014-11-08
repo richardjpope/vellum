@@ -32,7 +32,7 @@ def parse_query(text):
     response['definitions'] = re.findall(regex, text)
 
     #goats
-    response['vellum_count'] = float(len(text)) / float(chars_per_goat)
+    response['vellum_count'] = float((len(text)) / float(chars_per_goat)) * 2.0
 
 
     return response
