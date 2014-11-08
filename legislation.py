@@ -9,6 +9,8 @@ import feedparser
 
 def parse_query(text):
 
+    chars_per_goat = 36283
+
     response = {}
 
     #title[Act|Bill] [0-9][0-9][0-9][0-9]
@@ -19,7 +21,6 @@ def parse_query(text):
     description = re.findall('An Act to [^\.]*\.', text)
     response['description'] = description[0]
 
-
     #regulations
     response['regulations'] = []
     regex = re.compile('Regulations may [prescribe|provide|specify|make such provision|make provision|for the purpose|for any purpose][^\.]*', re.MULTILINE)
@@ -29,6 +30,10 @@ def parse_query(text):
     response['definitions'] = []
     regex = re.compile(u'[\u201c|"][0-9a-zA-Z_|\s]*[\u201d|"] means[^\.]*', re.UNICODE)
     response['definitions'] = re.findall(regex, text)
+
+    #goats
+    response['vellum_count'] = float(len(text)) / float(chars_per_goat)
+
 
     return response
 

@@ -3,6 +3,9 @@
 {% block content %}
   {% if result %}
     <h1>{{result.title}}</h1>
+    <p>
+      {{result.vellum_count}} goats
+    </p>
     <div class="panel panel-default">
       <div class="panel-heading">
         <a href="{{result.url}}" class="btn btn-default pull-right btn-xs">View full document</a>
