@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect, render_template
 import jinja2
 import os
-from legislation import parse_legislation, parse_bill, parse_query
+from legislation import parse_query
 
 app = Flask(__name__)
 app.debug = True
@@ -15,7 +15,6 @@ def result():
 
     result = None
     query = request.form.get('q')
-    print query
 
     if query:
         result = parse_query(query)
