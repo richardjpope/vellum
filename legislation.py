@@ -13,12 +13,20 @@ def parse_query(text):
 
     response = {}
 
-    #title[Act|Bill] [0-9][0-9][0-9][0-9]
+    #title & other legislation
     legislation = re.findall('[A-Z].*[Act|Bill] [1-9][0-9][0-9][0-9]', text)
     response['title'] = legislation[0]
+    response['other_legislation'] = []
+    for item in legislation:
+        item_cleaned = re.sub(".*section [0-9A-B]* of the ", "", item)
+        item_cleaned = re.sub("Part [0-9] of the", "", item_cleaned)
+        item_cleaned = re.sub("[A-B]\) of the ", "", item_cleaned)
+
+        if item_cleaned != response['title'] and item_cleaned not in response['other_legislation'] and len(item_cleaned) <= 50:
+            response['other_legislation'].append(item_cleaned)
 
     #description
-    description = re.findall('An Act to [^\.]*\.', text)
+    description = re.findall('An Act [^\.]*\.', text)
     response['description'] = description[0]
 
     #regulations
@@ -31,8 +39,24 @@ def parse_query(text):
     regex = re.compile(u'[\u201c|"][0-9a-zA-Z_|\s]*[\u201d|"] means[^\.]*', re.UNICODE)
     response['definitions'] = re.findall(regex, text)
 
-    #goats
+    #ministerial
+    response['ministerial_rights'] = []
+    regex = re.compile('The Secretary of State may [^not][^\.]*', re.MULTILINE+re.IGNORECASE)
+    response['ministerial_rights'] = re.findall(regex, text)
+
+    response['ministerial_responsibilities'] = []
+    regex = re.compile('The Secretary of State may not[^\.]*', re.MULTILINE+re.IGNORECASE)
+    may_not = re.findall(regex, text)
+    regex = re.compile('The Secretary of State must[^\.]*', re.MULTILINE+re.IGNORECASE)
+    must = re.findall(regex, text)
+    regex = re.compile('^The Secretary of State shall[^\.]*', re.MULTILINE+re.IGNORECASE)
+    shall = re.findall(regex, text)
+    response['ministerial_responsibilities'] = may_not + must + shall
+
+
+    #stats
     response['vellum_count'] = float((len(text)) / float(chars_per_goat)) * 2.0
+    response['word_count'] = len(text.split(' '))
 
 
     return response

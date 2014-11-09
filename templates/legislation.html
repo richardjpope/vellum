@@ -4,7 +4,7 @@
   {% if result %}
     <h1>{{result.title}}</h1>
     <p>
-      {{result.vellum_count}} goats
+      <a href="http://www.ianvisits.co.uk/blog/2014/01/01/why-it-will-take-6000-dead-goats-to-build-the-hs2-railway/">{{result.vellum_count|round(1, 'floor')}} goats</a>, {{result.word_count}} words
     </p>
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -44,9 +44,55 @@
         </table>
       </div>
     </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Other legislation mentioned</h3>
+      </div>
+      <div class="panel-body">
+        <table  class="table">
+          {% for item in result.other_legislation %}
+            <tr>
+              <td>{{item}}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Ministerial rights</h3>
+      </div>
+      <div class="panel-body">
+        <table  class="table">
+          {% for item in result.ministerial_rights %}
+            <tr>
+              <td>{{item}}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Ministerial responsibilities</h3>
+      </div>
+      <div class="panel-body">
+        <table  class="table">
+          {% for item in result.ministerial_responsibilities %}
+            <tr>
+              <td>{{item}}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
   {% else %}
     <form action="" method="post">
-      <textarea name="q" rows="8" cols="40"></textarea>
+      <textarea name="q" rows="4" cols="40"></textarea>
       <button type="submit" class="btn btn-default">Go</button>
     </form>
   {% endif %}

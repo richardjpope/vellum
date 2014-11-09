@@ -6,28 +6,19 @@ from legislation import parse_legislation, parse_bill, parse_query
 app = Flask(__name__)
 app.debug = True
 
-@app.route("/text", methods=['GET', 'POST'])
-def text():
+@app.route("/", methods=['GET', 'POST'])
+def index():
+    return render_template('index.html')
+
+@app.route("/result", methods=['GET', 'POST'])
+def result():
+
     result = None
     query = request.form.get('q')
+    print query
 
     if query:
         result = parse_query(query)
-
-    return render_template('legislation.html', result=result, query=query)
-
-@app.route("/", methods=['GET', 'POST'])
-def legislation():
-
-    result = None
-    query = request.args.get('q')
-
-    if query:
-        if query.find("legislation.gov.uk") >= 0:
-            result = parse_legislation(query)
-
-        if query.find("services.parliament.uk") >= 0:
-            result = parse_bill(query)
 
     return render_template('legislation.html', result=result, query=query)
 
