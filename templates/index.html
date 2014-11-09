@@ -6,11 +6,11 @@
     <p class="lead">Grok UK parliament bills and acts.</p>
     <form action="{{url_for('result')}}" method="post">
       <textarea id="q" name="q" rows="4" cols="40" placeholder="Enter full text of a bill or Act, or a url from legislation.gov.uk"></textarea>
+      <p id="examples" class="help-block">
+        Examples: <a href="/static/examples/welfare2012.txt">Welfare reform Act 2012</a>, <a href="/static/examples/hs2.txt">High Speed Rail (London - West Midlands) Bill</a>
+      </p>
       <button type="submit" class="btn btn-lg btn-success">Go</button>
     </form>
-    <p id="examples" class="help-block">
-      <a href="/static/examples/welfare2012.txt">Welfare reform Act 2012</a>, <a href="/static/examples/hs2.txt">High Speed Rail (London - West Midlands) Bill</a>
-    </p>
   </div>
 
   <!-- <div class="row marketing">

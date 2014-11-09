@@ -1,13 +1,14 @@
 
 
 designer
-example bills on homepage
 extra stats
 include length and number of sections
 small header on results page
 places mentioned
+view in context
 
 DONE:
 page title
 github
 make bill titles descriptions work properly (HS2)
+example bills on homepage

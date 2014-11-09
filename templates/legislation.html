@@ -23,7 +23,7 @@
         <table  class="table">
           {% for definition in result.definitions %}
             <tr>
-              <td>{{definition}}</td>
+              <td class="read">{{definition}}</td>
             </tr>
           {% endfor %}
         </table>
@@ -38,7 +38,7 @@
         <table  class="table">
           {% for regulation in result.regulations %}
             <tr>
-              <td>{{regulation}}</td>
+              <td class="read">{{regulation}}</td>
             </tr>
           {% endfor %}
         </table>
@@ -53,7 +53,7 @@
         <table  class="table">
           {% for item in result.other_legislation %}
             <tr>
-              <td>{{item}}</td>
+              <td class="read">{{item}}</td>
             </tr>
           {% endfor %}
         </table>
@@ -68,7 +68,7 @@
         <table  class="table">
           {% for item in result.ministerial_rights %}
             <tr>
-              <td>{{item}}</td>
+              <td class="read">{{item}}</td>
             </tr>
           {% endfor %}
         </table>
@@ -83,12 +83,32 @@
         <table  class="table">
           {% for item in result.ministerial_responsibilities %}
             <tr>
-              <td>{{item}}</td>
+              <td class="read">{{item}}</td>
             </tr>
           {% endfor %}
         </table>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="fulltext" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{result.title}}</h4>
+          </div>
+          <div class="modal-body">
+            {{query}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   {% else %}
     <form action="" method="post">

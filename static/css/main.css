@@ -2,7 +2,6 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
-
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -53,7 +52,7 @@ body {
 
 .jumbotron textarea {
   width:100%;
-  margin-bottom:30px;
+  margin-bottom:5px;
 }
 
 .jumbotron .btn {
@@ -74,6 +73,27 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
+
+.help-block {
+  font-size:16px;
+}
+
+.modal-dialog {
+  width:auto;
+}
+.modal-body {
+   white-space: pre-wrap;       /* css-3 */
+   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+   white-space: -pre-wrap;      /* Opera 4-6 */
+   white-space: -o-pre-wrap;    /* Opera 7 */
+   word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+.modal-body strong{
+  background:#FFBF47;
+  padding:4px;
+}
+
+
 
 
 /* Responsive: Portrait tablets and up */

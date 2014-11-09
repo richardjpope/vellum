@@ -1,10 +1,12 @@
 from flask import Flask, request, redirect, render_template
+from flaskext.markdown import Markdown
 import jinja2
 import os
 from legislation import parse_query
 
 app = Flask(__name__)
 app.debug = True
+Markdown(app)
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
